@@ -1,0 +1,71 @@
+<div class="container-fluid">
+  <h1>Add Product Form</h1>
+  <form #productForm="ngForm" (ngSubmit)="addProduct()" novalidate>
+    <div class="form-group">
+      <label>Product Id</label>
+      <input type="number" name="id" #idProd="ngModel" pattern="^\d{3}$" [class.is-invalid]="idProd.invalid && idProd.touched" class="form-control is-invalid" [(ngModel)]="id" required>
+      <small class="text-danger" [class.d-none]="idProd.valid || idProd.untouched">Product Id is required and must be of 3 digits</small>
+    </div>
+
+    <div class="form-group">
+      <label>Product Name</label>
+      <input type="text" name="name" #productName="ngModel" [class.is-invalid]="productName.invalid && productName.touched" class="form-control" [(ngModel)]="name" required>
+      <small class="text-danger" [class.d-none]="productName.valid || productName.untouched">Product Name is required</small>
+    </div>
+
+    <div class="form-group">
+      <label>Product Cost</label>
+      <input type="number" name="cost" #productCost="ngModel" [class.is-invalid]="productCost.invalid && productCost.touched" class="form-control" [(ngModel)]="cost" required>
+      <small class="text-danger" [class.d-none]="productCost.valid || productCost.untouched">Product Cost is required</small>
+    </div>
+
+    <div class="form-group">
+      <label>Product Online</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="chkOnline" #productOnline="ngModel" [class.is-invalid]="productOnline.invalid && productOnline.touched" value="Yes" [(ngModel)]="availableOnline" required>
+        <label class="form-check-label">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="chkOnline" #productOnline="ngModel" [class.is-invalid]="productOnline.invalid && productOnline.touched" value="No" [(ngModel)]="availableOnline">
+        <label class="form-check-label">No</label>
+      </div>
+      <small class="text-danger" [class.d-none]="productOnline.valid || productOnline.untouched">Please tick one of the radio buttons</small>
+    </div>
+
+    <div class="form-group">
+      <label>Product Category</label>
+      <select name="selectCat" #productCategory="ngModel" [class.is-invalid]="productCategory.invalid && productCategory.touched" class="custom-select" [(ngModel)]="category" required>
+        <option selected disabled value="">Select Category</option>
+        <option>Grocery</option>
+        <option>Mobile</option>
+        <option>Electronics</option>
+        <option>Clothes</option>
+      </select>
+      <small class="text-danger" [class.d-none]="productCategory.valid || productCategory.untouched">Please Select one of the category</small>
+    </div>
+
+    <div class="form-group">
+      <label>Available in Store</label>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="bigbazar" value="bigbazar" [(ngModel)]="availableInStore[0]">
+        <label class="form-check-label">Big Bazar</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="dmart" value="dmart" [(ngModel)]="availableInStore[1]">
+        <label class="form-check-label">DMart</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="reliance" value="reliance" [(ngModel)]="availableInStore[2]">
+        <label class="form-check-label">Reliance</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" name="megastore" value="megastore" [(ngModel)]="availableInStore[3]">
+        <label class="form-check-label">Mega Store</label>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input [disabled]="productForm.form.invalid" type="submit" (submit)="addProduct()" value="Add Product" class="btn btn-primary">
+    </div>
+  </form>
+</div>
