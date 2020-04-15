@@ -1,0 +1,43 @@
+<h2>Angular CRUD Operations(Lab 2)</h2>
+<form #userForm="ngForm">
+    <table>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                <input [(ngModel)]="Id" type="number" placeholder="Enter Id" name="Id" required #input1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input [(ngModel)]="Name" type="text" name="Name" placeholder="Enter Name" required #input2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Salary
+            </td>
+            <td>
+                <input [(ngModel)]="Salary" type="number" name="Salary" placeholder="Enter Salary" min="10000" required #input3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Department
+            </td>
+            <td>
+                <input [(ngModel)]="Department" type="text" name="Department" placeholder="Enter Department" required #input4>
+            </td>
+        </tr>
+        <tr>
+            <input [disabled]="userForm.form.invalid" (click)="addEmployee(input1.value,input2.value,input3.value,input4.value)" type="submit" value="Add Employee">
+        </tr>
+        <tr>
+            {{Id}} {{Name}} {{Salary}} {{Department}}
+        </tr>
+    </table>
+</form>

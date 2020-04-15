@@ -1,0 +1,39 @@
+<form #updateForm="ngForm">
+    <table>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                <input [(ngModel)]="updateEmployee.empId" type="number" placeholder="Enter Id" name="Id" #input1 required readonly>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input [(ngModel)]="updateEmployee.empName" type="text" name="Name" placeholder="Enter Name" #input2 required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Salary
+            </td>
+            <td>
+                <input [(ngModel)]="updateEmployee.empSal" type="number" name="Salary" placeholder="Enter Salary" min="10000" #input3 required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Department
+            </td>
+            <td>
+                <input [(ngModel)]="updateEmployee.empDep" type="text" name="Department" placeholder="Enter Department" #input4 required>
+            </td>
+        </tr>
+        <tr>
+            <input [disabled]="updateForm.form.invalid" (click)="updateEmp(input1.value,input2.value,input3.value,input4.value)" type="submit" value="Update Employee">
+        </tr>
+    </table>
+</form>
