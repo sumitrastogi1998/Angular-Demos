@@ -1,0 +1,113 @@
+<h2>Angular CRUD Operations(Lab 2)</h2>
+<form #userForm="ngForm">
+    <table>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                <input [(ngModel)]="Id" type="number" placeholder="Enter Id" name="Id" required #input1>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Name
+            </td>
+            <td>
+                <input [(ngModel)]="Name" type="text" name="Name" placeholder="Enter Name" required #input2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Salary
+            </td>
+            <td>
+                <input [(ngModel)]="Salary" type="number" name="Salary" placeholder="Enter Salary" min="10000" required #input3>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Department
+            </td>
+            <td>
+                <input [(ngModel)]="Department" type="text" name="Department" placeholder="Enter Department" required #input4>
+            </td>
+        </tr>
+        <tr>
+            <input [disabled]="userForm.form.invalid" (click)="addEmployee(input1.value,input2.value,input3.value,input4.value)" type="submit" value="Add Employee">
+        </tr>
+        <tr>
+            {{Id}} {{Name}} {{Salary}} {{Department}}
+        </tr>
+    </table>
+</form>
+
+<table border="1">
+    <tr>
+        <th><a href="#" (click)="sortById()"> Employee Id</a></th>
+        <th><a href="#" (click)="sortByName()">Employee Name</a></th>
+        <th><a href="#" (click)="sortBySalary()">Employee Salary</a></th>
+        <th><a href="#" (click)="sortByDept()">Employee Department</a></th>
+    </tr>
+    <tr *ngFor="let employee of empData; index as i">
+        <td>
+            {{this.employee.empId}}
+        </td>
+        <td>
+            {{this.employee.empName}}
+        </td>
+        <td>
+            {{this.employee.empSal}}
+        </td>
+        <td>
+            {{this.employee.empDep}}
+        </td>
+        <td>
+            <input (click)="fillUpdateEmp(this.employee.empId,this.employee.empName,this.employee.empSal,this.employee.empDep)" type="submit"
+                value="Update Employee">
+        </td>
+        <td>
+            <input (click)="deleteEmp(this.employee.empId)" type="submit"
+                value="Delete Employee">
+        </td>
+    </tr>
+</table>
+<form #updateForm="ngForm">
+<table *ngIf="disp">
+    <tr>
+        <td>
+            ID
+        </td>
+        <td>
+            <input [(ngModel)]="updatedId" type="number" placeholder="Enter Id" name="Id" required #input1 readonly>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            <input [(ngModel)]="updatedName" type="text" name="Name" placeholder="Enter Name" required #input2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Salary
+        </td>
+        <td>
+            <input [(ngModel)]="updatedSalary" type="number" name="Salary" placeholder="Enter Salary" min="10000" required #input3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Department
+        </td>
+        <td>
+            <input [(ngModel)]="updatedDepartment" type="text" name="Department" placeholder="Enter Department" required #input4>
+        </td>
+    </tr>
+    <tr>
+        <input [disabled]="updateForm.form.invalid" (click)="updateEmp(input1.value,input2.value,input3.value,input4.value)" type="submit" value="Update Employee">
+    </tr>
+</table>
+</form>
