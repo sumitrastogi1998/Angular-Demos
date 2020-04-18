@@ -1,0 +1,37 @@
+<style>
+a{
+color: red
+}
+</style>
+
+<h2>List Of Employees</h2>
+<table border="1">
+    <tr>
+        <th><a (click)="sortById()"> Employee Id</a></th>
+        <th><a (click)="sortByName()">Employee Name</a></th>
+        <th><a (click)="sortBySalary()">Employee Salary</a></th>
+        <th><a (click)="sortByDept()">Employee Department</a></th>
+    </tr>
+    <tr *ngFor="let employee of employees; index as i">
+        <td>
+            {{this.employee.id}}
+        </td>
+        <td>
+            {{this.employee.name}}
+        </td>
+        <td>
+            {{this.employee.salary}}
+        </td>
+        <td>
+            {{this.employee.department}}
+        </td>
+        <td>
+            <input routerLink="/updateEmployees" (click)="fillUpdateEmp(this.employee)" type="submit"
+                value="Update Employee">
+        </td>
+        <td>
+            <input (click)="deleteEmp(this.employee)" type="submit"
+                value="Delete Employee">
+        </td>
+    </tr>
+</table>
